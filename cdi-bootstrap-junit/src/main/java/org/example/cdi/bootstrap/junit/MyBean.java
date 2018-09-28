@@ -1,4 +1,4 @@
-package org.example.cdi;
+package org.example.cdi.bootstrap.junit;
 
 import javax.enterprise.context.Dependent;
 
