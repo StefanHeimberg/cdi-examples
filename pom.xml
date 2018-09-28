@@ -1,0 +1,98 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>org.example.cdi</groupId>
+    <artifactId>cdi-root</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>cdi-bootstrap-junit</module>
+    </modules>
+    
+    <properties>
+        <!-- Default Maven User Properties -->
+        <encoding>UTF-8</encoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+        <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+
+        <!-- cdi spec -->
+        <cdi.version>1.2</cdi.version>
+
+        <!-- cdi reference implementation -->
+        <weld.version>2.4.8.Final</weld.version>
+
+        <!-- testing versions -->
+        <junit.version>5.3.0</junit.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- ================================================================================ -->
+            <!-- Platform (CDI Api and Reference implementation) -->
+            <!-- ================================================================================ -->
+
+            <dependency>
+                <groupId>javax.enterprise</groupId>
+                <artifactId>cdi-api</artifactId>
+                <version>${cdi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld.se</groupId>
+                <artifactId>weld-se-core</artifactId>
+                <version>${weld.version}</version>
+            </dependency>
+
+            <!-- ================================================================================ -->
+            <!-- JUnit Testframework-->
+            <!-- ================================================================================ -->
+
+            <!-- https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.0</version>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <org.jboss.weld.development>true</org.jboss.weld.development>
+                        </systemPropertyVariables>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>2.22.0</version>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <org.jboss.weld.development>true</org.jboss.weld.development>
+                        </systemPropertyVariables>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
+
