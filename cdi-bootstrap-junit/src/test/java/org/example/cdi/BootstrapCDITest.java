@@ -10,7 +10,7 @@ public class BootstrapCDITest {
 
     @Test
     public void test() {
-        try (WeldContainer container = new Weld().enableDevMode().initialize()) {
+        try (WeldContainer container = new Weld().initialize()) {
             final MyBean myBean = container.select(MyBean.class).get();
             assertEquals("hello", myBean.sayHello());
         }
