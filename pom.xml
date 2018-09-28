@@ -10,6 +10,7 @@
 
     <modules>
         <module>cdi-bootstrap-junit</module>
+        <module>cdi-qualifier</module>
     </modules>
     
     <properties>
