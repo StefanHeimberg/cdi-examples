@@ -1,0 +1,99 @@
+<html><head><title>Weld - Validation Report</title><style>body {
+  font-family: Arial,sans-serif;
+  font-size: medium;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th {
+  text-align: left;
+  vertical-align: top;
+}
+
+table tr td, table tr th {
+  border: 1px solid #ddd;
+  line-height: 1em;
+  padding: 8px;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) {
+    background-color: #f9f9f9;
+}
+
+pre {
+  background-color: black;
+  color: white;
+  padding: 1em;
+}
+</style></head><body><h1>Weld - Validation Report</h1><table class="table-striped"><tr><td><strong>Generated at:</strong></td><td>Fri Sep 28 22:02:03 CEST 2018</td></tr><tr><td><strong>Weld Version:</strong></td><td>2.4.8.Final</td></tr><tr><td><strong>Weld Environment:</strong></td><td>SE</td></tr><tr><td><strong>Java Version:</strong></td><td>1.8.0_171</td></tr><tr><td><strong>Java Vendor:</strong></td><td>Oracle Corporation</td></tr><tr><td><strong>Operating System:</strong></td><td>Mac OS X</td></tr></table><ol><li><a href="#exception">Validation Issue</a></li><li><a href="#bdas">Deployment - Bean Archives</a></li><li><a href="#deps">Dependency Issues</a></li><li><a href="#beans">Enabled Beans</a></li><li><a href="#config">Weld Configuration - Modified Values</a></li></ol><a name="exception"></a><h2>Validation Issue</h2><p style="font-size: large;color: red;font-weight:bold;">WELD-001408: Unsatisfied dependencies for type MyBean with qualifiers @Default
+  at injection point [UnbackedAnnotatedField] @Inject private org.example.cdi.bootstrap.junit.BootstrapCDITest.myBean
+  at org.example.cdi.bootstrap.junit.BootstrapCDITest.myBean(BootstrapCDITest.java:0)
+</p><h3>Exception Stack:</h3><div id="exception"><pre>org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependencies for type MyBean with qualifiers @Default
+  at injection point [UnbackedAnnotatedField] @Inject private org.example.cdi.bootstrap.junit.BootstrapCDITest.myBean
+  at org.example.cdi.bootstrap.junit.BootstrapCDITest.myBean(BootstrapCDITest.java:0)
+
+	at org.jboss.weld.bootstrap.Validator.validateInjectionPointForDeploymentProblems(Validator.java:362)
+	at org.jboss.weld.bootstrap.Validator.validateInjectionPoint(Validator.java:284)
+	at org.jboss.weld.bootstrap.Validator.validateGeneralBean(Validator.java:137)
+	at org.jboss.weld.bootstrap.Validator.validateRIBean(Validator.java:158)
+	at org.jboss.weld.bootstrap.Validator.validateBean(Validator.java:501)
+	at org.jboss.weld.bootstrap.Validator.validateBeans(Validator.java:487)
+	at org.jboss.weld.bootstrap.Validator.validateDeployment(Validator.java:462)
+	at org.jboss.weld.bootstrap.WeldStartup.validateBeans(WeldStartup.java:478)
+	at org.jboss.weld.bootstrap.WeldBootstrap.validateBeans(WeldBootstrap.java:90)
+	at org.jboss.weld.environment.se.Weld.initialize(Weld.java:787)
+	at org.jboss.weld.junit.AbstractWeldInitiator.initWeldContainer(AbstractWeldInitiator.java:495)
+	at org.jboss.weld.junit5.WeldInitiator.initWeld(WeldInitiator.java:193)
+	at org.jboss.weld.junit5.WeldJunit5Extension.postProcessTestInstance(WeldJunit5Extension.java:175)
+	at org.junit.jupiter.engine.descriptor.ClassTestDescriptor.lambda$invokeTestInstancePostProcessors$5(ClassTestDescriptor.java:349)
+	at org.junit.jupiter.engine.descriptor.JupiterTestDescriptor.executeAndMaskThrowable(JupiterTestDescriptor.java:215)
+	at org.junit.jupiter.engine.descriptor.ClassTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassTestDescriptor.java:349)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175)
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1382)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312)
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:742)
+	at java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:742)
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580)
+	at org.junit.jupiter.engine.descriptor.ClassTestDescriptor.invokeTestInstancePostProcessors(ClassTestDescriptor.java:348)
+	at org.junit.jupiter.engine.descriptor.ClassTestDescriptor.instantiateAndPostProcessTestInstance(ClassTestDescriptor.java:270)
+	at org.junit.jupiter.engine.descriptor.ClassTestDescriptor.lambda$testInstanceProvider$2(ClassTestDescriptor.java:259)
+	at org.junit.jupiter.engine.descriptor.ClassTestDescriptor.lambda$testInstanceProvider$3(ClassTestDescriptor.java:263)
+	at java.util.Optional.orElseGet(Optional.java:267)
+	at org.junit.jupiter.engine.descriptor.ClassTestDescriptor.lambda$testInstanceProvider$4(ClassTestDescriptor.java:262)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:82)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:59)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:116)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:116)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:102)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:136)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:107)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:136)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:107)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:52)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:170)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:154)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:90)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:142)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:117)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:383)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:344)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:125)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:417)
+</pre></div><a name="bdas"></a><h2>Deployment - Bean Archives</h2><div id="bdas"><table class="table-striped"><tr><th></th><th>Identifier</th><th>Bean Discovery Mode</th><th>beans.xml</th></tr><tr><td>1.</td><td>org.jboss.weld.environment.deployment.WeldDeployment.synthetic</td><td>ALL</td><td><div title="URL not available">Version not defined</div></td></tr><tr><td>2.</td><td>org.jboss.weld.environment.deployment.WeldDeployment.additionalClasses</td><td>ANNOTATED</td><td>No beans.xml</td></tr></table></div><a name="deps"></a><h2>Dependency Issues</h2><div id="deps"><table class="table-striped"><tr><th></th><th>Declaring Bean</th><th>Problem</th></tr><tr><td>1.</td><td>Managed Bean [class org.example.cdi.bootstrap.junit.BootstrapCDITest] with qualifiers [@Any @Default]<td>Unsatisfied dependency at [UnbackedAnnotatedField] @Inject private org.example.cdi.bootstrap.junit.BootstrapCDITest.myBean</td></td></tr></table></div><a name="beans"></a><h2>Enabled Beans</h2><div id="beans"><table class="table-striped"><tr><th></th><th>Archive</th><th>Kind</th><th>Bean Class</th><th>Types</th><th>Qualifiers</th><th>Scope</th></tr><tr><td>1.</td><td><a href="#bdas"> 1</a></td><td>MANAGED</td><td><div title="org.example.cdi.bootstrap.junit.BootstrapCDITest">o.e.c.b.j.BootstrapCDITest</div></td><td><div title="org.example.cdi.bootstrap.junit.BootstrapCDITest">o.e.c.b.j.BootstrapCDITest</div></td><td>@Default</td><td>@javax.inject.Singleton</td></tr><tr><td>2.</td><td><a href="#bdas"> 2</a></td><td>EXTENSION</td><td><div title="org.jboss.weld.bootstrap.WeldExtension">o.j.w.b.WeldExtension</div></td><td><div title="org.jboss.weld.bootstrap.WeldExtension">o.j.w.b.WeldExtension</div><br><div title="javax.enterprise.inject.spi.Extension">j.e.i.s.Extension</div></td><td>@Default</td><td>@ApplicationScoped</td></tr><tr><td>3.</td><td><a href="#bdas"> 2</a></td><td>INTERCEPTOR</td><td><div title="org.jboss.weld.context.activator.ActivateRequestContextInterceptor">o.j.w.c.a.ActivateRequestContextInterceptor</div></td><td><div title="org.jboss.weld.context.activator.ActivateRequestContextInterceptor">o.j.w.c.a.ActivateRequestContextInterceptor</div></td><td>@Default</td><td>@Dependent</td></tr><tr><td>4.</td><td><a href="#bdas"> 2</a></td><td>EXTENSION</td><td><div title="org.jboss.weld.environment.se.WeldSEBeanRegistrant">o.j.w.e.s.WeldSEBeanRegistrant</div></td><td><div title="org.jboss.weld.environment.se.WeldSEBeanRegistrant">o.j.w.e.s.WeldSEBeanRegistrant</div><br><div title="javax.enterprise.inject.spi.Extension">j.e.i.s.Extension</div></td><td>@Default</td><td>@ApplicationScoped</td></tr><tr><td>5.</td><td><a href="#bdas"> 2</a></td><td>SYNTHETIC</td><td><div title="org.jboss.weld.environment.se.WeldSEBeanRegistrant">o.j.w.e.s.WeldSEBeanRegistrant</div></td><td><div title="org.jboss.weld.environment.se.WeldContainer">o.j.w.e.s.WeldContainer</div></td><td>@Default</td><td>@javax.inject.Singleton</td></tr><tr><td>6.</td><td><a href="#bdas"> 2</a></td><td>MANAGED</td><td><div title="org.jboss.weld.environment.se.beans.ParametersFactory">o.j.w.e.s.b.ParametersFactory</div></td><td><div title="org.jboss.weld.environment.se.beans.ParametersFactory">o.j.w.e.s.b.ParametersFactory</div></td><td>@Default</td><td>@ApplicationScoped</td></tr><tr><td>7.</td><td><a href="#bdas"> 2</a></td><td>PRODUCER_METHOD</td><td><div title="org.jboss.weld.environment.se.beans.ParametersFactory">o.j.w.e.s.b.ParametersFactory</div></td><td><div title="java.lang.Iterable&lt;String&gt;">j.l.Iterable&amp;lt;String&amp;gt;</div><br><div title="java.util.Collection&lt;String&gt;">j.u.Collection&amp;lt;String&amp;gt;</div><br><div title="java.util.List&lt;String&gt;">j.u.List&amp;lt;String&amp;gt;</div></td><td><div title="@org.jboss.weld.environment.se.bindings.Parameters()">@o.j.w.e.s.b.Parameters</div><br></td><td>@Dependent</td></tr><tr><td>8.</td><td><a href="#bdas"> 2</a></td><td>PRODUCER_METHOD</td><td><div title="org.jboss.weld.environment.se.beans.ParametersFactory">o.j.w.e.s.b.ParametersFactory</div></td><td><div title="java.lang.String[]">j.l.String[]</div><br></td><td><div title="@org.jboss.weld.environment.se.bindings.Parameters()">@o.j.w.e.s.b.Parameters</div><br></td><td>@Dependent</td></tr><tr><td>9.</td><td><a href="#bdas"> 2</a></td><td>INTERCEPTOR</td><td><div title="org.jboss.weld.environment.se.contexts.activators.ActivateThreadScopeInterceptor">o.j.w.e.s.c.a.ActivateThreadScopeInterceptor</div></td><td><div title="org.jboss.weld.environment.se.contexts.activators.ActivateThreadScopeInterceptor">o.j.w.e.s.c.a.ActivateThreadScopeInterceptor</div></td><td>@Default</td><td>@Dependent</td></tr><tr><td>10.</td><td><a href="#bdas"> 2</a></td><td>DECORATOR</td><td><div title="org.jboss.weld.environment.se.threading.RunnableDecorator">o.j.w.e.s.t.RunnableDecorator</div></td><td><div title="org.jboss.weld.environment.se.threading.RunnableDecorator">o.j.w.e.s.t.RunnableDecorator</div><br><div title="java.lang.Runnable">j.l.Runnable</div></td><td>@Default</td><td>@Dependent</td></tr><tr><td>11.</td><td><a href="#bdas"> 2</a></td><td>EXTENSION</td><td><div title="org.jboss.weld.junit5.auto.TestInstanceInjectionExtension">o.j.w.j.a.TestInstanceInjectionExtension</div></td><td><div title="org.jboss.weld.junit5.auto.TestInstanceInjectionExtension">o.j.w.j.a.TestInstanceInjectionExtension</div><br><div title="javax.enterprise.inject.spi.Extension">j.e.i.s.Extension</div></td><td>@Default</td><td>@ApplicationScoped</td></tr><tr><td>12.</td><td><a href="#bdas"> 2</a></td><td>INTERCEPTOR</td><td><div title="org.jboss.weld.probe.InvocationMonitor">o.j.w.p.InvocationMonitor</div></td><td><div title="org.jboss.weld.probe.InvocationMonitor">o.j.w.p.InvocationMonitor</div><br><div title="java.io.Serializable">j.i.Serializable</div></td><td>@Default</td><td>@Dependent</td></tr><tr><td>13.</td><td><a href="#bdas"> 2</a></td><td>EXTENSION</td><td><div title="org.jboss.weld.probe.ProbeExtension">o.j.w.p.ProbeExtension</div></td><td><div title="org.jboss.weld.probe.ProbeExtension">o.j.w.p.ProbeExtension</div><br><div title="javax.enterprise.inject.spi.Extension">j.e.i.s.Extension</div></td><td>@Default</td><td>@ApplicationScoped</td></tr></table></div><a name="config"></a><h2>Weld Configuration - Modified Values</h2><div id="config"><table class="table-striped"><tr><th></th><th>Key</th><th>Default Value</th><th>Value</th><th>Description</th></tr><tr><td>1.</td><td>org.jboss.weld.bootstrap.concurrentDeployment</td><td>true</td><td>false</td><td>Indicates whether the concurrent deployment is enabled.</td></tr><tr><td>2.</td><td>org.jboss.weld.construction.relaxed</td><td>false</td><td>true</td><td>Weld supports a non-standard workaround to be able to create client proxies for Java types that cannot be proxied by the container, using non-portable JVM APIs.</td></tr></table></div></body></html>
