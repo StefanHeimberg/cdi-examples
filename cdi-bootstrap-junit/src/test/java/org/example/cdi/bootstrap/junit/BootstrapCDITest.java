@@ -1,6 +1,5 @@
-package org.example.cdi;
+package org.example.cdi.bootstrap.junit;
 
-import org.example.cdi.bootstrap.junit.MyBean;
 import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
