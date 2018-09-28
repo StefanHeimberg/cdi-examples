@@ -1,3 +1,4 @@
 /target/
 /cdi-bootstrap-junit/target/
+/cdi-bootstrap-junit/target/weld-validation-report.html
 /.idea
