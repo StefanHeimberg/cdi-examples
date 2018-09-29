@@ -6,7 +6,7 @@ import javax.enterprise.context.Dependent;
 
 @Dependent
 @ManufacturerBmw
-public class BmwService implements CarService {
+public class BmwService implements CarService<Bmw> {
 
     @Override
     public Bmw produceCar() {

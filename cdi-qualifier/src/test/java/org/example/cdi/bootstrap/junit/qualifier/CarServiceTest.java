@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.enterprise.inject.spi.CDI;
 import javax.enterprise.util.AnnotationLiteral;
+import javax.enterprise.util.TypeLiteral;
 import javax.inject.Inject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,7 +25,7 @@ public class CarServiceTest {
 
     @Inject
     @ManufacturerBmw
-    private CarService bmwCarService;
+    private CarService<?> bmwCarService;
 
     @Inject
     @ManufacturerMercedes
@@ -32,18 +33,18 @@ public class CarServiceTest {
 
     @Inject
     @ManufacturerMercedes
-    private CarService mercedesCarService;
+    private CarService<?> mercedesCarService;
 
     @Inject
     @CarManufacturer("toyota")
-    private CarService toyotaCarService;
+    private CarService<?> toyotaCarService;
 
     @Inject
     @CarManufacturer("renault")
-    private CarService renaultCarService;
+    private CarService<?> renaultCarService;
 
     @Test
-    public void test_injection_direct() {
+    public void test_injection() {
         assertEquals("bmw", bmwService.produceCar().getName());
         assertEquals("mercedes", mercedesService.produceCar().getName());
 
@@ -61,11 +62,11 @@ public class CarServiceTest {
         assertEquals("bmw", current.select(BmwService.class, new AnnotationLiteral<ManufacturerBmw>() {}).get().produceCar().getName());
         assertEquals("mercedes", current.select(MercedesService.class, new AnnotationLiteral<ManufacturerMercedes>() {}).get().produceCar().getName());
 
-        assertEquals("bmw", current.select(CarService.class, new AnnotationLiteral<ManufacturerBmw>() {}).get().produceCar().getName());
-        assertEquals("mercedes", current.select(CarService.class, new AnnotationLiteral<ManufacturerMercedes>() {}).get().produceCar().getName());
+        assertEquals("bmw", current.select(new TypeLiteral<CarService<?>>() {}, new AnnotationLiteral<ManufacturerBmw>() {}).get().produceCar().getName());
+        assertEquals("mercedes", current.select(new TypeLiteral<CarService<?>>() {}, new AnnotationLiteral<ManufacturerMercedes>() {}).get().produceCar().getName());
 
-        assertEquals("toyota", current.select(CarService.class, new CarManufacturerQualifier("toyota")).get().produceCar().getName());
-        assertEquals("renault", current.select(CarService.class, new CarManufacturerQualifier("renault")).get().produceCar().getName());
+        assertEquals("toyota", current.select(new TypeLiteral<CarService<?>>() {}, new CarManufacturerQualifier("toyota")).get().produceCar().getName());
+        assertEquals("renault", current.select(new TypeLiteral<CarService<?>>() {}, new CarManufacturerQualifier("renault")).get().produceCar().getName());
     }
 
 }

@@ -7,7 +7,7 @@ import javax.enterprise.context.Dependent;
 
 @Dependent
 @CarManufacturer("renault")
-public class RenaultService implements CarService {
+public class RenaultService implements CarService<Renault> {
 
     @Override
     public Renault produceCar() {

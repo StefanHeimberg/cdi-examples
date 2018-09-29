@@ -1,7 +1,7 @@
 package org.example.cdi.bootstrap.junit.qualifier;
 
-public interface CarService {
+public interface CarService<T extends Car> {
 
-    Car produceCar();
+    T produceCar();
 
 }
