@@ -1,0 +1,21 @@
+language: java
+
+jdk:
+- oraclejdk8
+
+build:
+  ci:
+  - ./mvnw -DskipTests=false -DskipITs=false -Dmaven.test.redirectTestOutputToFile=true clean verify
+  - mkdir -p shippable/testresults/
+  - cp */target/surefire-reports/* shippable/testresults/ 2>/dev/null || true
+  - cp */target/failsafe-reports/* shippable/testresults/ 2>/dev/null || true
+
+integrations:
+  notifications:
+  - integrationName: email
+    type: email
+    recipients:
+    - kontakt@stefanheimberg.ch
+    sendFailingSnippet: true
+    on_success: change
+    on_failure: always
